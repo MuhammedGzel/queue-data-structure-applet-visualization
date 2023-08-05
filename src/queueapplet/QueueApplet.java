@@ -4,7 +4,6 @@ import java.applet.Applet;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Label;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +23,7 @@ public class QueueApplet extends Applet implements ActionListener {
     Button show = new Button("Show()");
     TextField numbertoInsert = new TextField(10);
 
+    @Override
     public void init() {
         setSize(800, 600);
         setLayout(null);
@@ -155,9 +155,8 @@ public class QueueApplet extends Applet implements ActionListener {
         if (ae.getSource() == enQueue) {
             Graphics g = getGraphics();
             try {
-                Node d = new Node(Integer.parseInt(numbertoInsert.getText()));
                 g.drawString("FRONT", 575, 415);
-                numbers.enQueue(d);
+                numbers.enQueue(Integer.parseInt(numbertoInsert.getText()));
                 if (boxCount < 13) {
 
                     if (boxCount < 6) {

@@ -1,7 +1,7 @@
-
 package queueapplet;
 
 class Node {
+
     int data;
     Node next;
 
@@ -27,32 +27,29 @@ public class QueueClass {
         return elementCount == 0;
     }
 
-    void enQueue(Node newNode) {
-        if (front == null) {
-            rear = newNode;
+    void enQueue(int newData) {
+        Node newNode = new Node(newData);
+        if (isEmpty()) {
             front = newNode;
-            elementCount++;
+            rear = newNode;
         } else {
             rear.next = newNode;
             rear = newNode;
-            elementCount++;
         }
+        elementCount++;
     }
 
     Node deQueue() {
-        Node removed = null;
-        if (front != null) {
-            if (front.next != null) {
-                removed = front;
-                front = front.next;
-                elementCount--;
-            } else {
-                removed = front;
-                front = null;
-                rear = null;
-                elementCount--;
-            }
+        if (isEmpty()) {
+            return null;
         }
+
+        Node removed = front;
+        front = front.next;
+        if (front == null) {
+            rear = null;
+        }
+        elementCount--;
         return removed;
     }
 
@@ -63,12 +60,14 @@ public class QueueClass {
     void printQueue() {
         if (!isEmpty()) {
             Node tmp = front;
-            for (int i = 0; i < elementCount; i++) {
-                System.out.print(tmp.data + " ");
+            while (tmp != null) {
+                System.out.print(tmp.data);
                 tmp = tmp.next;
+                if (tmp != null) {
+                    System.out.print(" ");
+                }
             }
+            System.out.println();
         }
-
     }
-
 }
