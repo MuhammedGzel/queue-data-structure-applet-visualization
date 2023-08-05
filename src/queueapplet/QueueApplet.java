@@ -22,7 +22,6 @@ public class QueueApplet extends Applet implements ActionListener {
     Button enQueue = new Button("Enqueue()");
     Button deQueue = new Button("Dequeue()");
     Button show = new Button("Show()");
-    Label numberLabel = new Label("Number");
     TextField numbertoInsert = new TextField(10);
 
     public void init() {
@@ -43,9 +42,6 @@ public class QueueApplet extends Applet implements ActionListener {
         add(numbertoInsert);
         numbertoInsert.setLocation(320, 150);
         numbertoInsert.setSize(120, 40);
-        add(numberLabel);
-        numberLabel.setLocation(285, 162);
-        numberLabel.setSize(30, 15);
         enQueue.addActionListener(this);
         deQueue.addActionListener(this);
         show.addActionListener(this);
