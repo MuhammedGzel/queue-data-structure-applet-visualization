@@ -31,15 +31,15 @@ public class QueueApplet extends Applet implements ActionListener {
         add(enQueue);
         enQueue.setLocation(100, 60);
         enQueue.setSize(120, 70);
-        enQueue.setBackground(Color.gray);
+        enQueue.setBackground(Color.LIGHT_GRAY);
         add(deQueue);
         deQueue.setLocation(320, 60);
         deQueue.setSize(120, 70);
-        deQueue.setBackground(Color.gray);
+        deQueue.setBackground(Color.LIGHT_GRAY);
         add(show);
         show.setLocation(540, 60);
         show.setSize(120, 70);
-        show.setBackground(Color.gray);
+        show.setBackground(Color.LIGHT_GRAY);
         add(numbertoInsert);
         numbertoInsert.setLocation(320, 150);
         numbertoInsert.setSize(120, 40);
