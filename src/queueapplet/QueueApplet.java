@@ -155,8 +155,8 @@ public class QueueApplet extends Applet implements ActionListener {
         if (ae.getSource() == enQueue) {
             Graphics g = getGraphics();
             try {
-                g.drawString("FRONT", 575, 415);
                 numbers.enQueue(Integer.parseInt(numbertoInsert.getText()));
+                g.drawString("FRONT", 575, 415);
                 if (boxCount < 13) {
 
                     if (boxCount < 6) {
