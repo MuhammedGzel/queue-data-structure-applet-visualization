@@ -48,7 +48,7 @@ public class QueueApplet extends Applet implements ActionListener {
 
     }
 
-    void insertDownBox(int number) {
+    void insertBoxToDown(int number) {
         Graphics g = getGraphics();
         g.drawRect(xDown, yDown, 50, 20);
         if (boxCount > 0) {
@@ -66,7 +66,7 @@ public class QueueApplet extends Applet implements ActionListener {
         boxCount++;
     }
 
-    void insertUpBox(int number) {
+    void insertBoxToUp(int number) {
         Graphics g = getGraphics();
         g.drawRect(xUp, yUp, 50, 20);
         if (boxCount > 6) {
@@ -85,7 +85,7 @@ public class QueueApplet extends Applet implements ActionListener {
         boxCount++;
     }
 
-    void removeDownBox() {
+    void removeBoxFromDown() {
         Graphics g = getGraphics();
         g.setColor(Color.white);
         g.fillRect(xDown + 80, yDown, 80, 35);
@@ -100,7 +100,7 @@ public class QueueApplet extends Applet implements ActionListener {
         boxCount--;
     }
 
-    void removeUpBox() {
+    void removeBoxFromUp() {
         Graphics g = getGraphics();
         g.setColor(Color.white);
         g.fillRect(xUp + 80, yUp, 80, 35);
@@ -116,7 +116,7 @@ public class QueueApplet extends Applet implements ActionListener {
         boxCount--;
     }
 
-    void clearScreen() {
+    void clearBoxes() {
         Graphics g = getGraphics();
         g.setColor(Color.white);
         g.fillRect(100, 400, 550, 100);
@@ -128,14 +128,14 @@ public class QueueApplet extends Applet implements ActionListener {
         yDown = 400;
     }
 
-    void reInsert(int n) {
+    void reInsertBoxes(int n) {
         Graphics g = getGraphics();
         Node tmp = numbers.front;
         for (int i = 1; i <= n; i++) {
             if (boxCount < 6) {
-                insertDownBox(tmp.data);
+                insertBoxToDown(tmp.data);
             } else {
-                insertUpBox(tmp.data);
+                insertBoxToUp(tmp.data);
             }
             if (boxCount == 7) {
                 g.drawLine(100, 370, 670, 370);
@@ -160,9 +160,9 @@ public class QueueApplet extends Applet implements ActionListener {
                 if (boxCount < 13) {
 
                     if (boxCount < 6) {
-                        insertDownBox(Integer.parseInt(numbertoInsert.getText()));
+                        insertBoxToDown(Integer.parseInt(numbertoInsert.getText()));
                     } else {
-                        insertUpBox(Integer.parseInt(numbertoInsert.getText()));
+                        insertBoxToUp(Integer.parseInt(numbertoInsert.getText()));
                     }
                     if (boxCount == 7) {
                         g.drawLine(100, 370, 670, 370);
@@ -201,15 +201,17 @@ public class QueueApplet extends Applet implements ActionListener {
                         g.fillRect(100, 390, 20, 40);
                     }
                     if (boxCount > 6) {
-                        removeUpBox();
+                        removeBoxFromUp();
                     } else {
-                        removeDownBox();
+                        removeBoxFromDown();
                     }
                 }
 
-                clearScreen();
-                reInsert(n);
-                g.drawString("FRONT", 575, 415);
+                clearBoxes();
+                reInsertBoxes(n);
+                if (numbers.elementCount > 0) {
+                    g.drawString("FRONT", 575, 415);
+                }
             } else {
                 JFrame frame = new JFrame();
                 JOptionPane.showMessageDialog(frame, "Queue is empty.");
