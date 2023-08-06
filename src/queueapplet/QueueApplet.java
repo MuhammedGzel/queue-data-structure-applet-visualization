@@ -155,10 +155,9 @@ public class QueueApplet extends Applet implements ActionListener {
         if (ae.getSource() == enQueue) {
             Graphics g = getGraphics();
             try {
-                numbers.enQueue(Integer.parseInt(numbertoInsert.getText()));
-                g.drawString("FRONT", 575, 415);
                 if (boxCount < 13) {
-
+                    numbers.enQueue(Integer.parseInt(numbertoInsert.getText()));
+                    g.drawString("FRONT", 575, 415);
                     if (boxCount < 6) {
                         insertBoxToDown(Integer.parseInt(numbertoInsert.getText()));
                     } else {
@@ -172,8 +171,7 @@ public class QueueApplet extends Applet implements ActionListener {
                         g.drawLine(100, 370, 100, 410);
                         g.drawString(">", 115, 415);
                     }
-                    JFrame frame = new JFrame();
-                    JOptionPane.showMessageDialog(frame, numbertoInsert.getText() + " added.");
+                    System.out.println(numbers.elementCount + " " + boxCount);
                 } else {
                     JFrame frame = new JFrame();
                     JOptionPane.showMessageDialog(frame, "Capacity is full.");
@@ -186,11 +184,8 @@ public class QueueApplet extends Applet implements ActionListener {
         }
 
         if (ae.getSource() == deQueue) {
-
             int n = boxCount - 1;
             Graphics g = getGraphics();
-
-            System.out.println(xUp);
             if (numbers.elementCount > 0) {
                 numbers.deQueue();
                 if (boxCount > 0) {
@@ -212,6 +207,7 @@ public class QueueApplet extends Applet implements ActionListener {
                 if (numbers.elementCount > 0) {
                     g.drawString("FRONT", 575, 415);
                 }
+                System.out.println(numbers.elementCount + " " + boxCount);
             } else {
                 JFrame frame = new JFrame();
                 JOptionPane.showMessageDialog(frame, "Queue is empty.");
